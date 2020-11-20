@@ -19,6 +19,7 @@
 		88E1DE592567F3B200BCA42B /* PointModeltests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E1DE582567F3B200BCA42B /* PointModeltests.swift */; };
 		88E1DE602567F58100BCA42B /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E1DE5F2567F58100BCA42B /* RootView.swift */; };
 		88E1DE672567F6B200BCA42B /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E1DE662567F6B200BCA42B /* MapView.swift */; };
+		88E1DE7125681C9300BCA42B /* PointCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E1DE7025681C9300BCA42B /* PointCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		88E1DE582567F3B200BCA42B /* PointModeltests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointModeltests.swift; sourceTree = "<group>"; };
 		88E1DE5F2567F58100BCA42B /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		88E1DE662567F6B200BCA42B /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		88E1DE7025681C9300BCA42B /* PointCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +144,7 @@
 			children = (
 				88E1DE5F2567F58100BCA42B /* RootView.swift */,
 				88E1DE662567F6B200BCA42B /* MapView.swift */,
+				88E1DE7025681C9300BCA42B /* PointCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -250,6 +253,7 @@
 				88CCB8222567E74800106883 /* ObjectLoader.swift in Sources */,
 				8867F0942567E32100138241 /* AppDelegate.swift in Sources */,
 				88E1DE602567F58100BCA42B /* RootView.swift in Sources */,
+				88E1DE7125681C9300BCA42B /* PointCell.swift in Sources */,
 				88E1DE3D2567ECDC00BCA42B /* Point.swift in Sources */,
 				88534EBB2567E95000588E23 /* DataProvider.swift in Sources */,
 				8867F0C52567E41700138241 /* RootController.swift in Sources */,
