@@ -17,6 +17,8 @@
 		88E1DE3D2567ECDC00BCA42B /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E1DE3C2567ECDC00BCA42B /* Point.swift */; };
 		88E1DE472567F02A00BCA42B /* DataProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E1DE462567F02A00BCA42B /* DataProviderTests.swift */; };
 		88E1DE592567F3B200BCA42B /* PointModeltests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E1DE582567F3B200BCA42B /* PointModeltests.swift */; };
+		88E1DE602567F58100BCA42B /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E1DE5F2567F58100BCA42B /* RootView.swift */; };
+		88E1DE672567F6B200BCA42B /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E1DE662567F6B200BCA42B /* MapView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +46,8 @@
 		88E1DE462567F02A00BCA42B /* DataProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProviderTests.swift; sourceTree = "<group>"; };
 		88E1DE482567F02A00BCA42B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		88E1DE582567F3B200BCA42B /* PointModeltests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointModeltests.swift; sourceTree = "<group>"; };
+		88E1DE5F2567F58100BCA42B /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		88E1DE662567F6B200BCA42B /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,8 +91,8 @@
 			children = (
 				8867F0932567E32100138241 /* AppDelegate.swift */,
 				8867F0C42567E41700138241 /* RootController.swift */,
-				88534EBA2567E95000588E23 /* DataProvider.swift */,
-				88CCB8212567E74800106883 /* ObjectLoader.swift */,
+				88E1DE632567F58500BCA42B /* Views */,
+				88E1DE5C2567F55400BCA42B /* Data Provider */,
 				88E1DE392567ECD100BCA42B /* Models */,
 				8867F0C92567E5F700138241 /* Supporting Files */,
 			);
@@ -122,6 +126,24 @@
 				88E1DE482567F02A00BCA42B /* Info.plist */,
 			);
 			path = WorkSmileTests;
+			sourceTree = "<group>";
+		};
+		88E1DE5C2567F55400BCA42B /* Data Provider */ = {
+			isa = PBXGroup;
+			children = (
+				88534EBA2567E95000588E23 /* DataProvider.swift */,
+				88CCB8212567E74800106883 /* ObjectLoader.swift */,
+			);
+			path = "Data Provider";
+			sourceTree = "<group>";
+		};
+		88E1DE632567F58500BCA42B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				88E1DE5F2567F58100BCA42B /* RootView.swift */,
+				88E1DE662567F6B200BCA42B /* MapView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -224,8 +246,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88E1DE672567F6B200BCA42B /* MapView.swift in Sources */,
 				88CCB8222567E74800106883 /* ObjectLoader.swift in Sources */,
 				8867F0942567E32100138241 /* AppDelegate.swift in Sources */,
+				88E1DE602567F58100BCA42B /* RootView.swift in Sources */,
 				88E1DE3D2567ECDC00BCA42B /* Point.swift in Sources */,
 				88534EBB2567E95000588E23 /* DataProvider.swift in Sources */,
 				8867F0C52567E41700138241 /* RootController.swift in Sources */,
