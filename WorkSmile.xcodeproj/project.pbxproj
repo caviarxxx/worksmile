@@ -11,6 +11,7 @@
 		8867F09D2567E32100138241 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8867F09C2567E32100138241 /* Assets.xcassets */; };
 		8867F0A02567E32100138241 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8867F09E2567E32100138241 /* LaunchScreen.storyboard */; };
 		8867F0C52567E41700138241 /* RootController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8867F0C42567E41700138241 /* RootController.swift */; };
+		8867F0CB2567E60000138241 /* path.json in Resources */ = {isa = PBXBuildFile; fileRef = 8867F0CA2567E60000138241 /* path.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		8867F09F2567E32100138241 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8867F0A12567E32100138241 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8867F0C42567E41700138241 /* RootController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootController.swift; sourceTree = "<group>"; };
+		8867F0CA2567E60000138241 /* path.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = path.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,11 +56,20 @@
 			children = (
 				8867F0932567E32100138241 /* AppDelegate.swift */,
 				8867F0C42567E41700138241 /* RootController.swift */,
+				8867F0C92567E5F700138241 /* Supporting Files */,
+			);
+			path = WorkSmile;
+			sourceTree = "<group>";
+		};
+		8867F0C92567E5F700138241 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
 				8867F09C2567E32100138241 /* Assets.xcassets */,
 				8867F09E2567E32100138241 /* LaunchScreen.storyboard */,
 				8867F0A12567E32100138241 /* Info.plist */,
+				8867F0CA2567E60000138241 /* path.json */,
 			);
-			path = WorkSmile;
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -120,6 +131,7 @@
 			files = (
 				8867F0A02567E32100138241 /* LaunchScreen.storyboard in Resources */,
 				8867F09D2567E32100138241 /* Assets.xcassets in Resources */,
+				8867F0CB2567E60000138241 /* path.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
