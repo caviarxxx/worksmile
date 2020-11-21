@@ -9,6 +9,8 @@ final class Point: Decodable {
     let accuracy: String
     let distance: String
     
+    var isValid: Bool = false
+    
     enum CodingKeys: String, CodingKey {
         case latitude
         case longitude

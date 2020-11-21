@@ -11,15 +11,30 @@ final class RootController: UIViewController {
     }
     
     private let dataProvider = DataProvider()
-    private var points: Array<Point>? {
+   
+    private var points: Array<Point> = [] {
         didSet {
-            customView.tableView.reloadData()
+            DispatchQueue.global().async { [weak self] in
+                var oldDistance: Double = 0.0
+                self?.points.forEach {
+                    let distance = Double($0.distance)!
+                    let difference = distance - oldDistance
+                    if difference < 0.01 {
+                        $0.isValid = true
+                    }
+                    oldDistance = distance
+                }
+                DispatchQueue.main.async { [weak self] in
+                    self?.customView.tableView.reloadData()
+                }
+            }
         }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        setupNavigationBar()
         fetchData()
     }
     
@@ -30,15 +45,22 @@ final class RootController: UIViewController {
         customView.tableView.dataSource = self
     }
     
+    private func setupNavigationBar() {
+        let routeButton = UIBarButtonItem(title: "Show route", style: .done, target: self, action: #selector(showRoute))
+        navigationItem.rightBarButtonItem = routeButton
+    }
+        
     private func fetchData() {
         dataProvider.fetch { [weak self] points, error in
             guard let self = self else { return }
-            if let _ = error {
-                fatalError()
-            } else {
-                self.points = points
-            }
+            guard error == nil, let points = points else { fatalError() }
+
+            self.points = points
         }
+    }
+    
+    @objc private func showRoute() {
+        customView.mapView.createPolyline(from: points)
     }
 }
 
@@ -49,15 +71,12 @@ extension RootController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 100
+        return points.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: PointCell.reuseIdentifier, for: indexPath) as? PointCell,
-              let point = points?[indexPath.row] else {
-            return UITableViewCell()
-        }
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: PointCell.reuseIdentifier, for: indexPath) as! PointCell
+        let point = points[indexPath.row]
         cell.setup(with: point)
         return cell
     }

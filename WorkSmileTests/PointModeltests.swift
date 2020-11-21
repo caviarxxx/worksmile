@@ -15,4 +15,24 @@ class PointModeltests: XCTestCase {
             XCTAssertEqual(objects?.first?.altitude, "175.162534")
         }
     }
+
+    func test_isValid_distance() {
+        dataProvider.fetch { objects, error in
+            guard let firstObject = objects?.first else {
+                XCTFail()
+                return
+            }
+            XCTAssertTrue(firstObject.isValid)
+        }
+    }
+    
+    func test_isNotValid_distance() {
+        dataProvider.fetch { objects, error in
+            guard let firstObject = objects?.first(where: { Double($0.distance)! > 0.03 }) else {
+                XCTFail()
+                return
+            }
+            XCTAssertFalse(firstObject.isValid)
+        }
+    }
 }
