@@ -17,22 +17,31 @@ class PointModeltests: XCTestCase {
     }
 
     func test_isValid_distance() {
+        var allObjects = 0
+        var validObjects = 0
+        var notValidObjects = 0
+        
         dataProvider.fetch { objects, error in
-            guard let firstObject = objects?.first else {
-                XCTFail()
-                return
+            
+            var oldDistance: Double = 0.0
+            objects?.forEach {
+
+                allObjects += 1
+
+                let distance = Double($0.distance)!
+                let difference = distance - oldDistance
+                if difference < 0.01 {
+                    validObjects += 1
+                    $0.isValid = true
+                } else {
+                    notValidObjects += 1
+                }
+                oldDistance = distance
             }
-            XCTAssertTrue(firstObject.isValid)
-        }
-    }
-    
-    func test_isNotValid_distance() {
-        dataProvider.fetch { objects, error in
-            guard let firstObject = objects?.first(where: { Double($0.distance)! > 0.03 }) else {
-                XCTFail()
-                return
-            }
-            XCTAssertFalse(firstObject.isValid)
+        
+            XCTAssertEqual(allObjects, 11088)
+            XCTAssertEqual(validObjects, 11085)
+            XCTAssertEqual(notValidObjects, 3)
         }
     }
 }

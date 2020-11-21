@@ -14,19 +14,23 @@ final class RootController: UIViewController {
    
     private var points: Array<Point> = [] {
         didSet {
-            DispatchQueue.global().async { [weak self] in
-                var oldDistance: Double = 0.0
-                self?.points.forEach {
-                    let distance = Double($0.distance)!
-                    let difference = distance - oldDistance
-                    if difference < 0.01 {
-                        $0.isValid = true
-                    }
-                    oldDistance = distance
+            validate()
+        }
+    }
+    
+    private func validate() {
+        DispatchQueue.global().async { [weak self] in
+            var oldDistance: Double = 0.0
+            self?.points.forEach {
+                let distance = Double($0.distance)!
+                let difference = distance - oldDistance
+                if difference < 0.01 {
+                    $0.isValid = true
                 }
-                DispatchQueue.main.async { [weak self] in
-                    self?.customView.tableView.reloadData()
-                }
+                oldDistance = distance
+            }
+            DispatchQueue.main.async { [weak self] in
+                self?.customView.tableView.reloadData()
             }
         }
     }
