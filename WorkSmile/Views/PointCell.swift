@@ -5,8 +5,8 @@ final class PointCell: UITableViewCell {
     static let reuseIdentifier = "PointCell"
     
     func setup(with point: Point) {
-        self.textLabel?.text = String(format: "%@, %@", point.latitude, point.longitude)
-        self.backgroundColor = point.isValid ? .white : .red
+        textLabel?.text = String(format: "%@, %@", point.latitude, point.longitude)
+        backgroundColor = point.isValid ? .white : .red
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
