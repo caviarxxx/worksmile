@@ -9,7 +9,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         window?.backgroundColor = .white
         window?.makeKeyAndVisible()
-        window?.rootViewController = RootController()
+        window?.rootViewController = UINavigationController(rootViewController: RootController())
 
         return true
     }

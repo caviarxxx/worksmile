@@ -2,6 +2,8 @@ import UIKit
 
 final class RootView: UIScrollView {
     
+    private let viewOffset = UIScreen.main.bounds.height / 2
+
     lazy var mapView: MapView = {
         let mapView = MapView()
         return mapView
@@ -10,10 +12,9 @@ final class RootView: UIScrollView {
     lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.register(PointCell.self, forCellReuseIdentifier: PointCell.reuseIdentifier)
-        tableView.bounces = false
         tableView.allowsSelection = false
-        tableView.tableFooterView = UIView()
-        tableView.showsVerticalScrollIndicator = false
+        tableView.contentOffset.y = -viewOffset
+        tableView.contentInset.top = viewOffset
         return tableView
     }()
     
@@ -26,9 +27,7 @@ final class RootView: UIScrollView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    var inflateOnPullDown = false
-    
+        
     func didScroll(scrollView: UIScrollView) {
         let offset = scrollView.contentOffset.y
         changeAlpha(value: offset)
@@ -36,7 +35,8 @@ final class RootView: UIScrollView {
     }
     
     private func applyParalaxEffect(value: CGFloat) {
-        constraints.first { $0.firstItem is MapView && $0.firstAttribute == .top }?.constant = value
+        let offset = -(viewOffset - value)
+        constraints.first { $0.firstItem is MapView && $0.firstAttribute == .top }?.constant = offset
     }
     
     private func changeAlpha(value: CGFloat) {
@@ -48,7 +48,7 @@ final class RootView: UIScrollView {
 extension RootView {
     
     private func addSubviews() {
-        [mapView, tableView].forEach {
+        [tableView, mapView].forEach {
             addSubview($0)
         }
     }
@@ -56,17 +56,17 @@ extension RootView {
     private func setupLayout() {
         mapView.translatesAutoresizingMaskIntoConstraints = false
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        
+      
         let constraints = [
-            mapView.topAnchor.constraint(equalTo: topAnchor),
+            mapView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
             mapView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
             mapView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
-            mapView.heightAnchor.constraint(equalToConstant: 300),
+            mapView.heightAnchor.constraint(equalToConstant: viewOffset),
             
-            tableView.topAnchor.constraint(equalTo: mapView.bottomAnchor),
+            tableView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
             tableView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+            tableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
         ]
         NSLayoutConstraint.activate(constraints)
     }

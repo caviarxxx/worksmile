@@ -24,6 +24,8 @@ final class RootController: UIViewController {
     }
     
     private func setupView() {
+        title = "Worksmile"
+        
         customView.tableView.delegate = self
         customView.tableView.dataSource = self
     }
