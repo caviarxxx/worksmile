@@ -4,7 +4,7 @@ final class MapView: MKMapView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.delegate = self
+        delegate = self
     }
     
     required init?(coder: NSCoder) {
@@ -17,15 +17,22 @@ final class MapView: MKMapView {
             .map { CLLocationCoordinate2D(latitude: Double($0.latitude)!, longitude: Double($0.longitude)!) }
         
         let polyline = MKPolyline(coordinates: coordinates, count: coordinates.count)
-        self.addOverlay(polyline)
+        addOverlay(polyline)
        
         let annotationStart = MKPointAnnotation()
         annotationStart.coordinate = coordinates.first!
-        self.addAnnotation(annotationStart)
+        addAnnotation(annotationStart)
         
         let annotationLast = MKPointAnnotation()
         annotationLast.coordinate = coordinates.last!
-        self.addAnnotation(annotationLast)
+        addAnnotation(annotationLast)
+        
+        zoomMap(to: polyline)
+    }
+    
+    private func zoomMap(to polyline: MKPolyline) {
+        let region = polyline.boundingMapRect
+        setRegion(MKCoordinateRegion(region), animated: true)
     }
 }
 
