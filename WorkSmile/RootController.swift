@@ -10,7 +10,7 @@ final class RootController: UIViewController {
         view = RootView()
     }
     
-    private let dataProvider = DataProvider()
+    private let dataProvider = PointsDataProvider()
     private var points: Array<Point> = []
     
     override func viewDidLoad() {

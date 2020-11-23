@@ -1,6 +1,6 @@
 import Foundation
 
-final class DataProvider: ObjectLoader {
+final class PointsDataProvider: ObjectLoader {
     func fetch(completion: ((Array<Point>?, Error?) -> ())?) {
         let object: Array<Point>? = self.objects(fromFile: "path", ofType: "json").validate()
         completion?(object, nil)
