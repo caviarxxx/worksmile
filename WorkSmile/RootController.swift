@@ -11,30 +11,8 @@ final class RootController: UIViewController {
     }
     
     private let dataProvider = DataProvider()
-   
-    private var points: Array<Point> = [] {
-        didSet {
-            validate()
-        }
-    }
+    private var points: Array<Point> = []
     
-    private func validate() {
-        DispatchQueue.global().async { [weak self] in
-            var oldDistance: Double = 0.0
-            self?.points.forEach {
-                let distance = Double($0.distance)!
-                let difference = distance - oldDistance
-                if difference < 0.01 {
-                    $0.isValid = true
-                }
-                oldDistance = distance
-            }
-            DispatchQueue.main.async { [weak self] in
-                self?.customView.tableView.reloadData()
-            }
-        }
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
