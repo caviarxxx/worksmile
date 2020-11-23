@@ -7,7 +7,7 @@ final class DataProvider: ObjectLoader {
     }
 }
 
-extension Array where Element: Point {
+private extension Array where Element: Point {
     func validate() -> Array<Point> {
         var oldDistance: Double = 0.0
         self.forEach {
